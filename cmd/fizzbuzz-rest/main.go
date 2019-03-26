@@ -22,36 +22,20 @@ func GetFizzBuzz(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
 	params := mux.Vars(r)
+	paramsIntVal := make(map[string]int)
 
-	//TODO handle error
-	int1, err := strconv.Atoi(params["int1"])
-	if err != nil {
-		w.WriteHeader(400)
-		log.Println("query error : ", err)
-		json.NewEncoder(w).Encode(map[string]string{"error": "int1 must be an integer"})
-		return
+	for _, name := range []string{"int1", "int2", "limit"} {
+		val, err := strconv.Atoi(params[name])
+		if err != nil {
+			w.WriteHeader(400)
+			log.Println("query error : ", err)
+			json.NewEncoder(w).Encode(map[string]string{"error": name + " must be an integer"})
+			return
+		}
+		paramsIntVal[name] = val
 	}
 
-	int2, err := strconv.Atoi(params["int2"])
-	if err != nil {
-		w.WriteHeader(400)
-		log.Println("query error : ", err)
-		json.NewEncoder(w).Encode(map[string]string{"error": "int2 must be an integer"})
-		return
-	}
-
-	limit, err := strconv.Atoi(params["limit"])
-	if err != nil {
-		w.WriteHeader(400)
-		log.Println("query error : ", err)
-		json.NewEncoder(w).Encode(map[string]string{"error": "limit must be an integer"})
-		return
-	}
-
-	str1 := params["str1"]
-	str2 := params["str2"]
-
-	result, err := fizzbuzz.Fizzbuzz(int1, int2, limit, str1, str2)
+	result, err := fizzbuzz.Fizzbuzz(paramsIntVal["int1"], paramsIntVal["int2"], paramsIntVal["limit"], params["str1"], params["str2"])
 
 	if err != nil {
 		w.WriteHeader(400)
