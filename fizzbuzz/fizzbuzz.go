@@ -3,7 +3,6 @@ package fizzbuzz
 import (
 	"errors"
 	"strconv"
-	"strings"
 )
 
 //Fizzbuzz must return a list of strings with numbers from 1 to limit, where:
@@ -24,12 +23,11 @@ func Fizzbuzz(int1, int2, limit int, str1, str2 string) ([]string, error) {
 	}
 
 	ret := make([]string, 0, limit-1)
-	fizzBuzzWord := strings.Join([]string{str1, str2}, "")
 
 	n := 1
 	for n <= limit {
 		if n%int1 == 0 && n%int2 == 0 {
-			ret = append(ret, fizzBuzzWord)
+			ret = append(ret, str1+str2)
 		} else if n%int1 == 0 {
 			ret = append(ret, str1)
 		} else if n%int2 == 0 {
