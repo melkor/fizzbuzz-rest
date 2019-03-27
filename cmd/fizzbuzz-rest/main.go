@@ -2,10 +2,11 @@ package main
 
 import (
 	"encoding/json"
-	"fizzbuzz-rest/fizzbuzz"
 	"log"
 	"net/http"
 	"strconv"
+
+	"github.com/melkor/fizzbuzz-rest/fizzbuzz"
 
 	"github.com/gorilla/mux"
 )
