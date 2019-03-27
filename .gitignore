@@ -1,6 +1,6 @@
 # Ignore binaries wherever they are
 /**/fizzbuzz-rest
 # Don't ignore folders with the same names as the binaries
-!/**/fizzbuzz-rest
+!/**/fizzbuzz-rest/
 # Ignore build directory
 /build
