@@ -7,12 +7,14 @@ import (
 
 	"github.com/gorilla/mux"
 	"github.com/melkor/fizzbuzz-rest/fizzbuzz"
+	"github.com/melkor/fizzbuzz-rest/hit"
 	log "github.com/sirupsen/logrus"
 )
 
 //App struct used to handle application
 type App struct {
 	address string
+	hit     *hit.Hit
 	router  *mux.Router
 }
 
@@ -27,6 +29,7 @@ func New(address string) *App {
 
 	a := &App{
 		address: address,
+		hit:     hit.New(),
 		router:  mux.NewRouter(),
 	}
 
@@ -79,10 +82,31 @@ func (a *App) getFizzBuzz(w http.ResponseWriter, r *http.Request) {
 		json.NewEncoder(w).Encode(map[string]string{"error": err.Error()})
 		return
 	}
+
 	log.Debugln("	result: ", result)
 
 	json.NewEncoder(w).Encode(result)
 	log.Debugln("Done...")
+
+	log.Debugln("Add request into historic")
+	a.hit.Add(
+		paramsIntVal["int1"],
+		paramsIntVal["int2"],
+		paramsIntVal["limit"],
+		params["str1"],
+		params["str2"],
+	)
+}
+
+func (a *App) getMostFrequentRequest(w http.ResponseWriter, r *http.Request) {
+	log.Debugln("received an audience request")
+
+	w.Header().Set("Content-Type", "application/json")
+
+	result := a.hit.GetMostFrequentRequest()
+	json.NewEncoder(w).Encode(result)
+
+	log.Debugln("	result: ", result)
 }
 
 //add http route into this func
@@ -100,7 +124,9 @@ func (a *App) initializeRoutes() {
 		Queries("str1", "{str1}").
 		Queries("str2", "{str2}")
 
-	//TODO add endpoint to stats
+	//endpoint to most frequent request
+	log.Debugln("Add route to /mostFrequentRequest endpoint")
+	a.router.HandleFunc("/mostFrequentRequest", a.getMostFrequentRequest)
 
 }
 
