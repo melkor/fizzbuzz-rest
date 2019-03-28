@@ -1,0 +1,18 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: fizzbuzz-rest
+Source: https://github.com/melkor/fizzbuzz-rest
+Files-Excluded:
+  vendor
+  Godeps/_workspace
+
+Files: *
+Copyright: 2019 
+License: TODO
+
+Files: debian/*
+Copyright: 2019 Jerome Bourgeois <melkor@sitadelle.com>
+License: TODO
+Comment: Debian packaging is licensed under the same terms as upstream
+
+License: TODO
+TODO
