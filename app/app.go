@@ -19,7 +19,8 @@ type App struct {
 //Init initialize application
 func New(address string) *App {
 
-	// assume http.ListenAndServe check if address is valide
+	//only check if an address was set, the validity check
+	// will be done by http.ListenAndServ
 	if address == "" {
 		address = ":8000"
 	}
@@ -32,15 +33,19 @@ func New(address string) *App {
 	return a
 }
 
-//GetFizzBuzz is the endpoint behind the route "/fizzbuzz"
+//getFizzBuzz is the endpoint behind the route "/fizzbuzz"
 // which will call fizzbuzz func and return result as a json message
-func (a *App) GetFizzBuzz(w http.ResponseWriter, r *http.Request) {
+func (a *App) getFizzBuzz(w http.ResponseWriter, r *http.Request) {
 	log.Debugln("received a fizzbuzz request")
 
 	w.Header().Set("Content-Type", "application/json")
 
 	params := mux.Vars(r)
 	paramsIntVal := make(map[string]int)
+
+	// this function is called only if all parameters are set in
+	// the querytring, we don't need to check if keys (int1 ,int2,
+	// limit, str1 and str2) are present in params map
 
 	//convert into integer the parameters from querystring
 	// which must be handle as integer
@@ -85,8 +90,9 @@ func (a *App) initializeRoutes() {
 	log.Infoln("Initialize routes")
 
 	//route "GET" to fizzbuzzaddr
+	//Note: all parameters must be set to use this route
 	log.Debugln("Add route to /fizzbuzz endpoint")
-	a.router.HandleFunc("/fizzbuzz", a.GetFizzBuzz).
+	a.router.HandleFunc("/fizzbuzz", a.getFizzBuzz).
 		Methods("GET").
 		Queries("int1", "{int1}").
 		Queries("int2", "{int2}").
@@ -95,6 +101,7 @@ func (a *App) initializeRoutes() {
 		Queries("str2", "{str2}")
 
 	//TODO add endpoint to stats
+
 }
 
 //Run function launch application
