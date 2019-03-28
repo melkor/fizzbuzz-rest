@@ -16,8 +16,10 @@ type App struct {
 }
 
 //Init initialize application
-func (a *App) Init() {
+func New() *App {
+	a := &App{}
 	a.router = mux.NewRouter()
+	return a
 }
 
 func (a *App) GetFizzBuzz(w http.ResponseWriter, r *http.Request) {
