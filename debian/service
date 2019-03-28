@@ -1,0 +1,12 @@
+[Unit]
+Description=FizzBuzz REST
+After=network.target local-fs.target nss-lookup.target
+
+[Service]
+ExecStart=/usr/bin/fizzbuzz-rest
+ExecReload=/usr/bin/fizzbuzz-rest
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
