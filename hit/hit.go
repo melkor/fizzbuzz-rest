@@ -1,23 +1,23 @@
-package hits
+package hit
 
 import (
 	"net/url"
 	"strconv"
 )
 
-type Hits struct {
+type Hit struct {
 	higherHit           int
 	mostFrequentRequest string
 	requests            map[string]int
 }
 
-func New() *Hits {
-	h := &Hits{}
+func New() *Hit {
+	h := &Hit{}
 	h.requests = make(map[string]int)
 	return h
 }
 
-func (h *Hits) Add(int1, int2, limit int, str1, str2 string) {
+func (h *Hit) Add(int1, int2, limit int, str1, str2 string) {
 	key := makeKey(int1, int2, limit, str1, str2)
 
 	if _, exists := h.requests[key]; exists {
@@ -32,7 +32,7 @@ func (h *Hits) Add(int1, int2, limit int, str1, str2 string) {
 	}
 }
 
-func (h *Hits) GetMostFrequentRequest() string {
+func (h *Hit) GetMostFrequentRequest() string {
 	return h.mostFrequentRequest
 }
 

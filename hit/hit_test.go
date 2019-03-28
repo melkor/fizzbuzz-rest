@@ -1,4 +1,4 @@
-package hits
+package hit
 
 import (
 	"testing"
