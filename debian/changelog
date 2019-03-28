@@ -1,5 +1,5 @@
-fizzbuzz-rest (0.0~git20190328.dddaa3c-1) UNRELEASED; urgency=medium
+fizzbuzz-rest (0.0~git20190328.dddaa3c-1) unstable; urgency=medium
 
-  * Initial release (Closes: TODO)
+  * Initial release
 
- -- Jerome Bourgeois <melkor@sitadelle.com>  Thu, 28 Mar 2019 14:04:10 +0100
+ -- Jerome Bourgeois <melkor666free@gmail.com>  Thu, 28 Mar 2019 14:04:10 +0100

@@ -2,7 +2,7 @@ Source: fizzbuzz-rest
 Section: devel
 Priority: optional
 Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
-Uploaders: Jerome Bourgeois <melkor@sitadelle.com>
+Uploaders: Jerome Bourgeois <melkor666free@gmail.com>
 Build-Depends: debhelper (>= 11),
                dh-golang,
                golang-any,
@@ -23,4 +23,4 @@ Built-Using: ${misc:Built-Using}
 Depends: ${misc:Depends},
          ${shlibs:Depends}
 Description: fizzbuzz rest in go
- TODO: long description
+ fizzbuzz-rest is a simple web server that will expose a REST API endpoint that: accepts five parameters : three integers int1, int2 and limit, and two strings str1 and str2. Returns a list of strings with numbers from 1 to limit, where: all multiples of int1 are replaced by str1, all multiples of int2 are replaced by str2, all multiples of int1 and int2 are replaced by str1str2.
