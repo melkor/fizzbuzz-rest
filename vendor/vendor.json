@@ -23,6 +23,18 @@
 			"revisionTime": "2019-03-04T09:57:49Z"
 		},
 		{
+			"checksumSHA1": "kE+XsNANOVG/PabPZkuvSpKmH50=",
+			"path": "github.com/sirupsen/logrus",
+			"revision": "787e519fa85519b874dead61020de598e9a23944",
+			"revisionTime": "2019-03-28T08:41:56Z"
+		},
+		{
+			"checksumSHA1": "jq+YTlb76KU6iPrGJSksH/hnRNo=",
+			"path": "github.com/sirupsen/logrus/internal/terminal",
+			"revision": "787e519fa85519b874dead61020de598e9a23944",
+			"revisionTime": "2019-03-28T08:41:56Z"
+		},
+		{
 			"checksumSHA1": "VK+UsykzUMkaKl2ankiyutolraE=",
 			"path": "github.com/spf13/pflag",
 			"revision": "24fa6976df40757dce6aea913e7b81ade90530e1",
@@ -33,6 +45,12 @@
 			"path": "github.com/stretchr/testify/assert",
 			"revision": "34c6fa2dc70986bccbbffcc6130f6920a924b075",
 			"revisionTime": "2019-03-04T09:57:49Z"
+		},
+		{
+			"checksumSHA1": "lFULPHzDCUyLqXZc4Fzi7bIOsow=",
+			"path": "golang.org/x/sys/unix",
+			"revision": "f49334f85ddcf0f08d7fb6dd7363e9e6d6b777eb",
+			"revisionTime": "2019-03-21T05:14:46Z"
 		}
 	],
 	"rootPath": "github.com/melkor/fizzbuzz-rest"
