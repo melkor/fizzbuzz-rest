@@ -44,11 +44,11 @@ func (a *App) getFizzBuzz(w http.ResponseWriter, r *http.Request) {
 	paramsIntVal := make(map[string]int)
 
 	// this function is called only if all parameters are set in
-	// the querytring, we don't need to check if keys (int1 ,int2,
+	// the querystring, we don't need to check if keys (int1 ,int2,
 	// limit, str1 and str2) are present in params map
 
 	//convert into integer the parameters from querystring
-	// which must be handle as integer
+	// which must be handled as integer
 	for _, name := range []string{"int1", "int2", "limit"} {
 		val, err := strconv.Atoi(params[name])
 		log.Debugln("	param: ", name, ", value: ", val)
@@ -62,7 +62,7 @@ func (a *App) getFizzBuzz(w http.ResponseWriter, r *http.Request) {
 	}
 
 	log.Debugln("	param: str1, value: ", params["str1"])
-	log.Debugln("	param: str1, value: ", params["str2"])
+	log.Debugln("	param: str2, value: ", params["str2"])
 
 	// call fizz-buzz function
 	result, err := fizzbuzz.Fizzbuzz(
