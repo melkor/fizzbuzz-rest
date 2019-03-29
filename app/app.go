@@ -14,22 +14,26 @@ import (
 //App struct used to handle application
 type App struct {
 	address string
-	hit     *hit.Hit
+	hit     *hit.Cache
 	router  *mux.Router
 }
 
 //New initialize application
-func New(address string) *App {
+func New(listenAddress, cacheAddress, cachePassword string) *App {
 
 	//only check if an address was set, the validity check
 	// will be done by http.ListenAndServ
-	if address == "" {
-		address = ":8000"
+	if listenAddress == "" {
+		listenAddress = ":8000"
+	}
+
+	if cacheAddress == "" {
+		cacheAddress = "localhost:6379"
 	}
 
 	a := &App{
-		address: address,
-		hit:     hit.New(),
+		address: listenAddress,
+		hit:     hit.NewCache(cacheAddress, cachePassword, 0),
 		router:  mux.NewRouter(),
 	}
 
@@ -89,13 +93,19 @@ func (a *App) getFizzBuzz(w http.ResponseWriter, r *http.Request) {
 	log.Debugln("Done...")
 
 	log.Debugln("Add request into historic")
-	a.hit.Add(
+	score, err := a.hit.Add(
 		paramsIntVal["int1"],
 		paramsIntVal["int2"],
 		paramsIntVal["limit"],
 		params["str1"],
 		params["str2"],
 	)
+
+	if err != nil {
+		log.Errorln("add hit error : ", err)
+	}
+
+	log.Debugln("hit score: ", score)
 }
 
 func (a *App) getMostFrequentRequest(w http.ResponseWriter, r *http.Request) {
@@ -103,7 +113,15 @@ func (a *App) getMostFrequentRequest(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("Content-Type", "application/json")
 
-	result := a.hit.GetMostFrequentRequest()
+	result, err := a.hit.GetMostFrequentRequest()
+
+	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		log.Errorln("most frequent request error : ", err)
+		json.NewEncoder(w).Encode(map[string]string{"error": err.Error()})
+		return
+	}
+
 	json.NewEncoder(w).Encode(result)
 
 	log.Debugln("	result: ", result)

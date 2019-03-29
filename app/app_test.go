@@ -65,7 +65,7 @@ func TestGetFizzBuzz(t *testing.T) {
 		// We create a ResponseRecorder (which satisfies http.ResponseWriter) to record the response.
 		rr := httptest.NewRecorder()
 
-		app := New("")
+		app := New("", "", "")
 		app.initializeRoutes()
 
 		// Our handlers satisfy http.Handler, so we can call their ServeHTTP method
