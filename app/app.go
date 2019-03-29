@@ -18,7 +18,7 @@ type App struct {
 	router  *mux.Router
 }
 
-//Init initialize application
+//New initialize application
 func New(address string) *App {
 
 	//only check if an address was set, the validity check
