@@ -3,6 +3,24 @@
 	"ignore": "test",
 	"package": [
 		{
+			"checksumSHA1": "5Cd0X2P9NRI7xK/OjwOTzydS7ww=",
+			"path": "github.com/alicebob/gopher-json",
+			"revision": "5a6b3ba71ee69b77cf64febf8b5a7526ca5eaef0",
+			"revisionTime": "2018-01-25T19:05:56Z"
+		},
+		{
+			"checksumSHA1": "Q0o5jrfnHz2BNBdx4Q28vOsAytI=",
+			"path": "github.com/alicebob/miniredis",
+			"revision": "9615c6402328d2b1ae8a19f18adab10fa8c25f04",
+			"revisionTime": "2019-03-29T15:35:36Z"
+		},
+		{
+			"checksumSHA1": "5x+tg0G+EWetJpMV6sxA7qTGZwQ=",
+			"path": "github.com/alicebob/miniredis/server",
+			"revision": "9615c6402328d2b1ae8a19f18adab10fa8c25f04",
+			"revisionTime": "2019-03-29T15:35:36Z"
+		},
+		{
 			"checksumSHA1": "dvabztWVQX8f6oMLRyv4dLH+TGY=",
 			"origin": "github.com/stretchr/testify/vendor/github.com/davecgh/go-spew/spew",
 			"path": "github.com/davecgh/go-spew/spew",
@@ -52,6 +70,12 @@
 			"revisionTime": "2019-03-25T11:21:10Z"
 		},
 		{
+			"checksumSHA1": "29SMun24tC5a7pMCmb9Ay8RP1ic=",
+			"path": "github.com/gomodule/redigo/redis",
+			"revision": "39e2c31b7ca38b521ceb836620a269e62c895dc9",
+			"revisionTime": "2019-03-22T06:41:13Z"
+		},
+		{
 			"checksumSHA1": "WgzN84Tx+7en7p/e8gSTupIqygw=",
 			"path": "github.com/gorilla/mux",
 			"revision": "c5c6c98bc25355028a63748a498942a6398ccd22",
@@ -87,6 +111,30 @@
 			"path": "github.com/stretchr/testify/assert",
 			"revision": "34c6fa2dc70986bccbbffcc6130f6920a924b075",
 			"revisionTime": "2019-03-04T09:57:49Z"
+		},
+		{
+			"checksumSHA1": "M+RppZUrOQ/4xPTfX70yLjJz6Qs=",
+			"path": "github.com/yuin/gopher-lua",
+			"revision": "8bfc7677f583b35a5663a9dd934c08f3b5774bbb",
+			"revisionTime": "2019-02-06T04:34:14Z"
+		},
+		{
+			"checksumSHA1": "yNGEI9BMDbGwabUnaHvV9ZZm/a0=",
+			"path": "github.com/yuin/gopher-lua/ast",
+			"revision": "8bfc7677f583b35a5663a9dd934c08f3b5774bbb",
+			"revisionTime": "2019-02-06T04:34:14Z"
+		},
+		{
+			"checksumSHA1": "Xqha1yOJYcd+Tka5voqYLQ6ykmc=",
+			"path": "github.com/yuin/gopher-lua/parse",
+			"revision": "8bfc7677f583b35a5663a9dd934c08f3b5774bbb",
+			"revisionTime": "2019-02-06T04:34:14Z"
+		},
+		{
+			"checksumSHA1": "mo237P0EzRWuGa/u9bnsFjUy1sw=",
+			"path": "github.com/yuin/gopher-lua/pm",
+			"revision": "8bfc7677f583b35a5663a9dd934c08f3b5774bbb",
+			"revisionTime": "2019-02-06T04:34:14Z"
 		},
 		{
 			"checksumSHA1": "lFULPHzDCUyLqXZc4Fzi7bIOsow=",
