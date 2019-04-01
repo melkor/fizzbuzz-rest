@@ -16,4 +16,4 @@ RUN make
 EXPOSE 8000
 
 # Run the executable
-CMD ["fizzbuzz-rest", "-d", "-v"]
+CMD ["fizzbuzz-rest", "-d", "-v", "--cache-address", "redis:6379"]
