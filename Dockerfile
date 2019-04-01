@@ -12,7 +12,7 @@ COPY . .
 # Install the package
 RUN make 
 
-# This container exposes port 8080 to the outside world
+# This container exposes port to the outside world
 EXPOSE 8000
 
 # Run the executable
