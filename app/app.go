@@ -14,7 +14,7 @@ import (
 //App struct used to handle application
 type App struct {
 	address string
-	hit     *hit.Cache
+	hit     hit.HiteHandler
 	router  *mux.Router
 }
 

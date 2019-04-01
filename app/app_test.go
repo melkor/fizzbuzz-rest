@@ -4,6 +4,8 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"testing"
+
+	"github.com/melkor/fizzbuzz-rest/hit"
 )
 
 func TestGetFizzBuzz(t *testing.T) {
@@ -67,6 +69,7 @@ func TestGetFizzBuzz(t *testing.T) {
 
 		app := New("", "", "")
 		app.initializeRoutes()
+		app.hit = hit.NewMock()
 
 		// Our handlers satisfy http.Handler, so we can call their ServeHTTP method
 		// directly and pass in our Request and ResponseRecorder.

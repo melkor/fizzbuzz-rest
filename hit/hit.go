@@ -7,37 +7,14 @@ import (
 
 //Hit represents an object store hit in memory
 type Hit struct {
-	higherHit           int
+	higherHit           float64
 	mostFrequentRequest string
-	requests            map[string]int
+	requests            map[string]float64
 }
 
-//New initialize a Hit object
-func New() *Hit {
-	h := &Hit{}
-	h.requests = make(map[string]int)
-	return h
-}
-
-//Add is used to add a request in Hit
-func (h *Hit) Add(int1, int2, limit int, str1, str2 string) {
-	key := makeKey(int1, int2, limit, str1, str2)
-
-	if _, exists := h.requests[key]; exists {
-		h.requests[key]++
-	} else {
-		h.requests[key] = 1
-	}
-
-	if h.requests[key] > h.higherHit {
-		h.higherHit = h.requests[key]
-		h.mostFrequentRequest = key
-	}
-}
-
-//GetMostFrequentRequest return the most frequebt request
-func (h *Hit) GetMostFrequentRequest() string {
-	return h.mostFrequentRequest
+type HiteHandler interface {
+	Add(int1, int2, limit int, str1, str2 string) (float64, error)
+	GetMostFrequentRequest() (string, error)
 }
 
 func makeKey(int1, int2, limit int, str1, str2 string) string {

@@ -35,7 +35,7 @@ func TestMakeKey(t *testing.T) {
 
 func TestAdd(t *testing.T) {
 
-	h := New()
+	h := NewMock()
 
 	int1 := 3
 	int2 := 5
@@ -50,6 +50,7 @@ func TestAdd(t *testing.T) {
 
 	}
 	h.Add(1, 2, 3, "puzzle", "buble")
+	mostFrequentRequest, _ := h.GetMostFrequentRequest()
 
-	assert.Equal(t, expectedMostFrequentedRequest, h.GetMostFrequentRequest(), "")
+	assert.Equal(t, expectedMostFrequentedRequest, mostFrequentRequest, "")
 }
