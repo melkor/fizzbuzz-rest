@@ -1,5 +1,12 @@
 package hit
 
+//Hit represents an object store hit in memory
+type Hit struct {
+	higherHit           float64
+	mostFrequentRequest string
+	requests            map[string]float64
+}
+
 //NewMock initialize a Hit mocker object
 func NewMock() *Hit {
 	h := &Hit{}

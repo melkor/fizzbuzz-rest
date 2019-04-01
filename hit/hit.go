@@ -5,14 +5,10 @@ import (
 	"strconv"
 )
 
-//Hit represents an object store hit in memory
-type Hit struct {
-	higherHit           float64
-	mostFrequentRequest string
-	requests            map[string]float64
-}
-
-type HiteHandler interface {
+//Handler is an interface that provides 2 functions
+// - Add to add a hit into historic
+// - GetMostFrequentRequest to get the most frequent request
+type Handler interface {
 	Add(int1, int2, limit int, str1, str2 string) (float64, error)
 	GetMostFrequentRequest() (string, error)
 }
