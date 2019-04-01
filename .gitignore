@@ -9,3 +9,5 @@
 /debian/debhelper-build-stamp
 /debian/files
 /debian/fizzbuzz-rest*
+# Ignore swap files 
+/**/.*.swp
