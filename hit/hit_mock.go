@@ -21,7 +21,7 @@ func NewMock() *Hit {
 func (h *Hit) Add(int1, int2, limit int, str1, str2 string) (float64, error) {
 	key := makeKey(int1, int2, limit, str1, str2)
 
-	// if request is not present in historic, we initialize the score of if to 0
+	// if request is not present in historic, we initialize the score of it to 0
 	// else we add 1 to that score
 	if _, exists := h.requests[key]; exists {
 		h.requests[key]++

@@ -10,7 +10,7 @@ import (
 // replaced by str2, all multiples of int1 and int2 are replaced by str1str2
 func Fizzbuzz(int1, int2, limit int, str1, str2 string) ([]string, error) {
 
-	// check parameters int1 int2 and limit are valides to avoid divided by 0 for
+	// check parameters int1 int2 and limit are valides to avoid divid by 0 for
 	// example
 	if int1 < 1 {
 		return []string{}, errors.New("int1 can't be lower than 1")

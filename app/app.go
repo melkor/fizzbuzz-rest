@@ -1,6 +1,6 @@
 package app
 
-// this package handle endpoint of the application
+// this package handle endpoints of the application
 
 import (
 	"encoding/json"
