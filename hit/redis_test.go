@@ -29,9 +29,11 @@ func TestCache(t *testing.T) {
 	expectedMostFrequentedRequest := makeKey(int1, int2, limit, str1, str2)
 
 	for i := 0; i < 2; i++ {
-		c.Add(int1, int2, limit, str1, str2)
+		_, err := c.Add(int1, int2, limit, str1, str2)
+		assert.NoError(t, err)
 	}
-	c.Add(1, 2, 3, "puzzle", "buble")
+	_, err = c.Add(1, 2, 3, "puzzle", "buble")
+	assert.NoError(t, err)
 
 	val, err := c.GetMostFrequentRequest()
 	if err != nil {
