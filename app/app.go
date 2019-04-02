@@ -1,5 +1,7 @@
 package app
 
+// this package handle endpoint of the application
+
 import (
 	"encoding/json"
 	"net/http"
@@ -95,7 +97,10 @@ func (a *App) getFizzBuzz(w http.ResponseWriter, r *http.Request) {
 
 	log.Debugln("	result: ", result)
 
-	json.NewEncoder(w).Encode(result)
+	err = json.NewEncoder(w).Encode(result)
+	if err != nil {
+		log.Errorln("jsonize error : ", err)
+	}
 	log.Debugln("Done...")
 
 	log.Debugln("Add request into historic")
@@ -131,7 +136,10 @@ func (a *App) getMostFrequentRequest(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	json.NewEncoder(w).Encode(result)
+	err = json.NewEncoder(w).Encode(result)
+	if err != nil {
+		log.Errorln("jsonize error : ", err)
+	}
 
 	log.Debugln("	result: ", result)
 }

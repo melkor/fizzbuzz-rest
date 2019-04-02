@@ -13,6 +13,7 @@ type Handler interface {
 	GetMostFrequentRequest() (string, error)
 }
 
+//make a unique key with request paramters
 func makeKey(int1, int2, limit int, str1, str2 string) string {
 	q := url.Values{}
 	q.Add("int1", strconv.Itoa(int1))

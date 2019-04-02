@@ -1,5 +1,7 @@
 package main
 
+// this package check command line paramters and launch application
+
 import (
 	"fmt"
 	"os"

@@ -1,10 +1,10 @@
 #fizzbuzz-rest
 
-FizzBuzz-rest is a simple fizz-buzz REST server. This server exposes a REST API endpoint that: Accepts five parameters : three integers int1, int2 and limit, and two strings str1 and str2. Returns a list of strings with numbers from 1 to limit, where: all multiples of int1 are replaced by str1, all multiples of int2 are replaced by str2, all multiples of int1 and int2 are replaced by str1str2.
+Fizzbuzz-rest is a simple fizz-buzz REST server. This server exposes a REST API endpoint that: Accepts five parameters : three integers int1, int2 and limit, and two strings str1 and str2. Returns a list of strings with numbers from 1 to limit, where: all multiples of int1 are replaced by str1, all multiples of int2 are replaced by str2, all multiples of int1 and int2 are replaced by str1str2.
 
 ## Installation
 
-This module build a docker image that can be launch with docker-compose. 
+This module build a docker image with fizzbuzz-rest server. This application need a redis to store historic. The docker-compose is used to launch fizzbuzz-rest and redis images.
 
 You must install this module in your GOPATH.
 ``` shell
@@ -19,17 +19,23 @@ You must install this module in your GOPATH.
 ```
 
 ## Exemples
+
+To get the **fizzbuzz** of 1 and 7 with numbers from 1 to 25.
 ``` shell
 > curl 'localhost:8000/fizzbuzz?int1=3&int2=7&limit=25&str1=fizz&str2=fuzz'
 ["1","2","fizz","4","5","fizz","fuzz","8","fizz","10","11","fizz","13","fuzz","fizz","16","17","fizz","19","20","fizzfuzz","22","23","fizz","25"]
 >
 ```
 
+To get the most frequent request.
 ``` shell
 > curl localhost:8000/mostFrequentRequest
 "int1=3\u0026int2=7\u0026limit=25\u0026str1=fizz\u0026str2=fuzz"
 >
 ```
+
+Note: see https://golang.org/pkg/encoding/json/#Marshal for an explanation of **\u0026** instead of **&**
+
 
 
 <!--
