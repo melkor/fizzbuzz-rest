@@ -62,7 +62,10 @@ func (a *App) getFizzBuzz(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			w.WriteHeader(http.StatusBadRequest)
 			log.Errorln("query error : ", err)
-			json.NewEncoder(w).Encode(map[string]string{"error": name + " must be an integer"})
+			err := json.NewEncoder(w).Encode(map[string]string{"error": name + " must be an integer"})
+			if err != nil {
+				log.Errorln("jsonize error : ", err)
+			}
 			return
 		}
 		paramsIntVal[name] = val
@@ -83,7 +86,10 @@ func (a *App) getFizzBuzz(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
 		log.Errorln("fizzbuzz error : ", err)
-		json.NewEncoder(w).Encode(map[string]string{"error": err.Error()})
+		err := json.NewEncoder(w).Encode(map[string]string{"error": err.Error()})
+		if err != nil {
+			log.Errorln("jsonize error : ", err)
+		}
 		return
 	}
 
@@ -118,7 +124,10 @@ func (a *App) getMostFrequentRequest(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		log.Errorln("most frequent request error : ", err)
-		json.NewEncoder(w).Encode(map[string]string{"error": err.Error()})
+		err := json.NewEncoder(w).Encode(map[string]string{"error": err.Error()})
+		if err != nil {
+			log.Errorln("jsonize error : ", err)
+		}
 		return
 	}
 

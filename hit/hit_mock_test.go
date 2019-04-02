@@ -46,10 +46,12 @@ func TestAdd(t *testing.T) {
 	expectedMostFrequentedRequest := makeKey(int1, int2, limit, str1, str2)
 
 	for i := 0; i < 2; i++ {
-		h.Add(int1, int2, limit, str1, str2)
-
+		_, err := h.Add(int1, int2, limit, str1, str2)
+		assert.NoError(t, err)
 	}
-	h.Add(1, 2, 3, "puzzle", "buble")
+
+	_, err := h.Add(1, 2, 3, "puzzle", "buble")
+	assert.NoError(t, err)
 	mostFrequentRequest, _ := h.GetMostFrequentRequest()
 
 	assert.Equal(t, expectedMostFrequentedRequest, mostFrequentRequest, "")
